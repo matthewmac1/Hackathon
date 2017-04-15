@@ -9,6 +9,16 @@
 
 
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
 
 html {
     color: #222;
@@ -105,6 +115,8 @@ body {
 
 .title {
     color: white;
+		float:left;
+
 }
 
 /* ==============
@@ -149,6 +161,7 @@ nav a:hover {
 
 .main article h1 {
     font-size: 2em;
+		float: left;
 }
 
 .main aside {
