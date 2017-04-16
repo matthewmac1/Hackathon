@@ -98,11 +98,12 @@ legend.onAdd = function(mymap){
   grades = [0, 10, 20, 50, 100, 200, 500, 1000],
   labels = [];
 
+/*All this does is break things so keep it locked up in this comment. 25 to life. solitary confinment xD
 for(var i = 0; i < grades.length; i++){
   div.innerHTML +=
     '<i style="background:' + getColour(grades[i] + 1) + '"></i> '+
     grades[i] +(grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-}
+}*/
 
   return div;
 };
