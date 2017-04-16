@@ -48,10 +48,13 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
     }
+    info.update(layer.feature.properties);
 }
 
 function resetHighlight(e) {
     geojson.resetStyle(e.target);
+    info.update();
+
 }
 
 var geojson;
@@ -73,21 +76,53 @@ geojson = L.geoJson(statesData, {
     style: style,
     onEachFeature: onEachFeature
 }).addTo(mymap);
+
+
+var info = L.control();
+info.onAdd = function(mymap){
+  this._div = L.DomUtil.create('div', 'info');
+  this.update();
+  return this._div;
+};
+
+info.update = function(props){
+  this._div.innerHTML = '<h4>US Air Pollution Levels</h4>'+ (props ?
+  '<b>' + props.name + '</b><br />' +props.density + ' people / mi<sup>2</sup>'
+  : 'Hover over a state');
+};
+info.addTo(mymap);
+
+var legend = L.control({position: 'bottomright'});
+legend.onAdd = function(mymap){
+  var div = L.DomUtil.create('div', 'info legend'),
+  grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+  labels = [];
+
+for(var i = 0; i < grades.length; i++){
+  div.innerHTML +=
+    '<i style="background:' + getColour(grades[i] + 1) + '"></i> '+
+    grades[i] +(grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+}
+
+  return div;
+};
+
+legend.addTo(mymap);
+
+
 //===============================================================================
 
 
 /* DON'T TOUCH THIS OR I WILL RIP YOUR HEART OUT-------------------------------------------------------------------------*/
 /*When button is clicked*/
 $('#start').click(function(air){
-	/*Print this to console*/
-  console.log("we starting");
+
 
 /*Get the JSON from the API*/
   $.getJSON("https://api.waqi.info/map/bounds/?latlng=28.70,-127.50,48.85,-55.90&token=ad9b0d10be0a4d6028e3724fc9d4f7e24a429d85", function(result){
   /*ForEach loop to find every dot*/
   result.data.forEach(function(thing){
-  /*Print details on each dot to console*/
-      console.log(thing)
+
 
 			/*Create longitude and latitude variables*/
       var lng = thing.lon;
