@@ -1,16 +1,44 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-      <!-- default stuff -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>test</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+    <!--CSS and fonts-->
+    <link rel="stylesheet" href="main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Righteous" rel="stylesheet">
+    <!--leaflet stuff-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!--mapbox stuff-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!--contents of the sidebar-->
+    <div id="sidebar">
+      <h1>Breathe Deep</h1>
+      <p>
+        Find the best air<br/><br/>
+        A webapp to display the air quality over the US, press 'Start' to display the data.
+      </p>
+      <button id="start">Start</button>
+
+    </div>
 
 
-        <!-- my style sheets -->
+    <!--map-->
+    <div id="mapid"></div>
 
+    <!--JQuery and other scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!--state borders--><script type="text/javascript" src="us-states.js"></script>
+    <script src="main.js"></script>
+
+  </body>
+
+
+
+<<<<<<< HEAD
+=======
         <link rel="stylesheet" href="main.css">
 
         <!-- Leaflet Stylesheet -->
@@ -60,4 +88,5 @@
         });
       </script>
     </body>
+>>>>>>> origin/master
 </html>
