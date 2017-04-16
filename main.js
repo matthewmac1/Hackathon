@@ -75,11 +75,9 @@ geojson = L.geoJson(statesData, {
     onEachFeature: onEachFeature
 }).addTo(mymap);
 //===============================================================================
-=======
-
-CartoDB_DarkMatter.addTo(mymap);
 
 
+//Comment your god damn code scrub
 /* DON'T TOUCH THIS OR I WILL RIP YOUR HEART OUT-------------------------------------------------------------------------*/
 $('#start').click(function(air){
   console.log("we starting");
@@ -103,4 +101,3 @@ $('#start').click(function(air){
 });
 
 /* okay we cool -------------------------------------------------------------------------------------------------------*/
->>>>>>> origin/master
