@@ -74,3 +74,40 @@ geojson = L.geoJson(statesData, {
     onEachFeature: onEachFeature
 }).addTo(mymap);
 //===============================================================================
+
+
+/* DON'T TOUCH THIS OR I WILL RIP YOUR HEART OUT-------------------------------------------------------------------------*/
+/*When button is clicked*/
+$('#start').click(function(air){
+	/*Print this to console*/
+  console.log("we starting");
+
+/*Get the JSON from the API*/
+  $.getJSON("https://api.waqi.info/map/bounds/?latlng=28.70,-127.50,48.85,-55.90&token=ad9b0d10be0a4d6028e3724fc9d4f7e24a429d85", function(result){
+  /*ForEach loop to find every dot*/
+  result.data.forEach(function(thing){
+  /*Print details on each dot to console*/
+      console.log(thing)
+
+			/*Create longitude and latitude variables*/
+      var lng = thing.lon;
+      var lat = thing.lat;
+
+			/*Draw circles*/
+      var circle = L.circle([lat,lng],{
+				/*Make 'em red*/
+        color: 'red',
+				/*Fill 'em red*/
+        fillColor: '#f03',
+				/*make 'em see through*/
+        fillOpacity: 0.5,
+				/*this gonna change maybe*/
+        radius: 5000
+      })
+			/*Draw Circle on map*/
+      circle.addTo(mymap);
+    });
+  });
+});
+
+/* okay we cool -------------------------------------------------------------------------------------------------------*/
