@@ -92,13 +92,25 @@ $('#start').click(function(air){
 			/*Create longitude and latitude variables*/
       var lng = thing.lon;
       var lat = thing.lat;
+	  
+	var ql = thing.aqi;
+
+	function getColour(ql){
+		return ql > 300 ? '#7e0023':
+		 	ql > 200 ? '#660099':
+			ql > 150 ? '#cc0033':
+			ql > 100 ? '#ff9933':
+			ql > 50  ? '#ffde33':
+				    '#009966';
+	}
+
 
 			/*Draw circles*/
       var circle = L.circle([lat,lng],{
 				/*Make 'em red*/
-        color: 'red',
+        color: getColour(ql),
 				/*Fill 'em red*/
-        fillColor: '#f03',
+        fillColor: getColour(ql),
 				/*make 'em see through*/
         fillOpacity: 0.5,
 				/*this gonna change maybe*/
