@@ -92,29 +92,55 @@ $('#start').click(function(air){
 			/*Create longitude and latitude variables*/
       var lng = thing.lon;
       var lat = thing.lat;
-	  
+
 	var ql = thing.aqi;
 
-	function getColour(ql){
-		return ql > 300 ? '#7e0023':
-		 	ql > 200 ? '#660099':
-			ql > 150 ? '#cc0033':
-			ql > 100 ? '#ff9933':
-			ql > 50  ? '#ffde33':
-				    '#009966';
+	function getLevel(ql){
+		return ql > 300 ? 7:
+		 	ql > 200 ? 6:
+			ql > 150 ? 5:
+			ql > 100 ? 4:
+			ql > 50  ? 3:
+			ql > 25  ? 2:
+				    1;
 	}
 
 
+
+	function getColour(lvl){
+		return lvl == 7  ?  '#7e0023':
+			lvl == 6  ?  '#660099':
+			lvl == 5  ?  '#cc0033':
+			lvl == 4  ?  '#ff9933':
+			lvl == 3  ?  '#ffde33':
+			lvl == 2  ?  '#99cc44':
+		      	     	     '#009966';
+	}
+
+
+
+	function getRadius(lvl){
+		return 5000 + ((lvl - 1)*1500);
+	}
+
+
+
+
+	var level = getLevel(ql);
+
 			/*Draw circles*/
       var circle = L.circle([lat,lng],{
-				/*Make 'em red*/
-        color: getColour(ql),
-				/*Fill 'em red*/
-        fillColor: getColour(ql),
+
+
+	 		/*Make 'em colourful*/
+        color: getColour(level),
+				/*Fill 'em colourful*/
+        fillColor: getColour(level),
 				/*make 'em see through*/
         fillOpacity: 0.5,
-				/*this gonna change maybe*/
-        radius: 5000
+
+				/*make it radius out*/
+        radius: getRadius(level)
       })
 			/*Draw Circle on map*/
       circle.addTo(mymap);
