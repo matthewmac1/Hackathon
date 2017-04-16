@@ -36,13 +36,13 @@ h1{
   color: black;
   text-align: center;
   text-shadow: -1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px -1px 0 #ffffff, 1px 1px 0 #ffffff;
-  padding-bottom: 20px;
+  padding-bottom: 10%;;
 }
 
 p{
   margin-left: 5px;
   margin-right: 5px;
-  padding-bottom: 35%;
+  padding-bottom: 25%;
   font-size: 13px;
 }
 /*formatting buttons*/
