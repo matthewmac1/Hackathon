@@ -14,44 +14,29 @@ var CartoDB_DarkMatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/
 	maxZoom: 19
 });
 
-//add the tilelayer to the map
 CartoDB_DarkMatter.addTo(mymap);
 
-/*
-//when the button on is clicked
-$('#shakey').click(function() {
-    console.log("getting quakes");
-    //use the jquery get json method to retrieve our json
-    $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", function(result) {
-        //response data is now in the result variable
-        //uncomment the line below to see the raw json, this would let you see the structure of the response
-        //console.log(result)
-        //I know that the earthquakes are defined in an array (or list) result.features
-        result.features.forEach(function(quake) {
-          //for each earthquake
-          //get its coordinates
-          var lng = quake.geometry.coordinates[0];
-          var lat = quake.geometry.coordinates[1];
-          //and it magnitude
-          var mag = quake.properties.mag * 50;
-          //for each earthquake create a circle
-            var circle = L.circle([lat, lng], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: mag
-            })
-            //and add it to the map
-            circle.addTo(mymap);
 
-        });
+/* DON'T TOUCH THIS OR I WILL RIP YOUR HEART OUT-------------------------------------------------------------------------*/
+$('#start').click(function(air){
+  console.log("we starting");
 
+  $.getJSON("https://api.waqi.info/map/bounds/?latlng=28.70,-127.50,48.85,-55.90&token=ad9b0d10be0a4d6028e3724fc9d4f7e24a429d85", function(result){
+    result.data.forEach(function(thing){
+      console.log(thing)
+
+      var lng = thing.lon;
+      var lat = thing.lat;
+
+      var circle = L.circle([lat,lng],{
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 5000
+      })
+      circle.addTo(mymap);
     });
-
-
-    $.getJSON("http://www.kuakes.com/json/?callback=?", function(result) {
-      console.log(result);
-    });
-
+  });
 });
-*/
+
+/* okay we cool -------------------------------------------------------------------------------------------------------*/
